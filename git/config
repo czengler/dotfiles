@@ -2,7 +2,7 @@
 	name = Christoph Zengler
 
 [core]
-	excludesFile = $HOME/.config/git/ignore_global
+	excludesFile = ~/.config/git/ignore_global
 	autocrlf = input
 
 [color]
