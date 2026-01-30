@@ -2,7 +2,7 @@
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications --fontdir=/Library/Fonts"
 
 export GOPATH="$HOME/go"
-export PATH="$HOME/.local/bin:$GOPATH/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/sbin:$HOME/bin"
+export PATH="$HOME/.local/bin:$GOPATH/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/sbin:$HOME/bin:$PATH"
 
 # Add in snippets
 zinit snippet OMZP::macos
@@ -20,4 +20,3 @@ export PATH="$HOME/.jbang/bin:$PATH"
 export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=true
 
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
-
