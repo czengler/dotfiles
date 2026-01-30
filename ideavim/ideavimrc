@@ -1,0 +1,82 @@
+" tabstop stuff
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set autoindent
+
+" code formatting stuff
+set formatoptions=tcqro
+
+"  set showmatch
+set mat=2
+
+" Highlight the current line and column
+" Don't do this - It makes window redraws painfully slow
+set line
+set nocursorcolumn
+
+" set the search scan to wrap lines
+set wrapscan
+
+set ignorecase
+set hlsearch
+set incsearch
+set showmatch
+set smartcase
+let timeoutlen = 300,
+
+let mapleader = " "
+let maplocalleader = " "
+
+set commentary
+
+" Turn off that stupid highlight search
+nmap <silent> <leader>h :nohls<CR>
+
+" Activate system clipboard
+set clipboard=unnamed
+" Allow the cursor to go in to "invalid" places
+set virtualedit=all
+set clipboard+=ideaput
+
+" Some of my most important vim bindings
+" general mappings
+nmap <silent> <leader>w :w!<CR>
+nmap <silent> <leader>d <Action>(CloseActiveTab)
+nmap <silent> <leader>f <Action>(GotoFile)
+nmap <silent> <leader>1 <Action>(GoToTab1)
+nmap <silent> <leader>2 <Action>(GoToTab2)
+nmap <silent> <leader>3 <Action>(GoToTab3)
+nmap <silent> <leader>4 <Action>(GoToTab4)
+nmap <silent> <leader>5 <Action>(GoToTab5)
+nmap <silent> <leader>6 <Action>(GoToTab6)
+nmap <silent> <leader>7 <Action>(GoToTab7)
+nmap <silent> <leader>8 <Action>(GoToTab8)
+nmap <silent> <leader>9 <Action>(GoToTab9)
+nmap <silent> <leader>9 <Action>(GoToTab9)
+
+" code
+nmap <silent> <leader>cl <Action>(ShowErrorDescription)
+nmap <silent> <leader>cj <Action>(GotoNextError)
+nmap <silent> <leader>ck <Action>(GotoPreviousError)
+nmap <silent> <leader>cf <Action>(ReformatCode)
+nmap <silent> <leader>cr <Action>(RenameElement)
+
+" git
+nmap <silent> ]g <Action>(VcsShowNextChangeMarker)
+nmap <silent> [g <Action>(VcsShowPrevChangeMarker)
+nmap <silent> <leader>gl <Action>(GitToolBox.BlameDetails)
+
+" Activate NerdTree bindings
+set NERDTree
+nmap <silent> <leader>e :NERDTreeToggle<CR>
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapCloseChildren='h'
+
+" Window Management
+nmap <silent> <C-h> <C-w>h
+nmap <silent> <C-j> <C-w>j
+nmap <silent> <C-k> <C-w>k
+nmap <silent> <C-l> <C-w>l
+
