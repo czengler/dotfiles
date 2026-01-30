@@ -1,0 +1,50 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+symbol = ' '
+
+[gradle]
+disabled = true
+
+[java]
+format = '[${symbol}(${version} )]($style)'
+version_format = '${major}'
+symbol = ' '
+style = 'blue'
+
+[kotlin]
+format = '[${symbol}(${version} )]($style)'
+symbol = ' '
+style = 'yellow'
+
+[golang]
+format = '[${symbol}(${version} )]($style)'
+symbol = ' '
+style = 'blue'
+
+[rust]
+format = '[${symbol}(${version} )]($style)'
+symbol = ' '
+style = 'blue'
+
+[nodejs]
+format = '[${symbol}(${version} )]($style)'
+style = 'blue'
+
+[python]
+format = '[${symbol}(${version} )]($style)'
+symbol = ' '
+style = 'blue'
+
+[conda]
+format = '[${symbol}(${version} )]($style)'
+symbol = '🅒 '
+style = 'blue'
+
+[package]
+format = '[${symbol}${version}]($style) '
+symbol = ' '
+style = 'green'
