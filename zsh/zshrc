@@ -131,8 +131,11 @@ export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
 # OS specific sections
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    source "$XDG_CONFIG_HOME/zsh/zshrc.macos"
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    source "$XDG_CONFIG_HOME/zsh/zshrc.linux" 
+if [[ $OSTYPE == "darwin"* ]]; then
+    source $XDG_CONFIG_HOME/zsh/zshrc.macos
+elif [[ $OSTYPE == "linux-gnu"* ]]; then
+    source $XDG_CONFIG_HOME/zsh/zshrc.linux 
 fi
+
+# source private environment variables
+source $XDG_CONFIG_HOME/zsh/private.env
