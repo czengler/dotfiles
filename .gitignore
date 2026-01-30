@@ -1,3 +1,5 @@
 tmux/plugins/
 yazi/plugins/
+
 zsh/private.env
+/nvim/lazy-lock.json
