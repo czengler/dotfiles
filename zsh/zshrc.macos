@@ -1,0 +1,23 @@
+# Global directories
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications --fontdir=/Library/Fonts"
+
+export GOPATH="$HOME/go"
+export PATH="$HOME/.local/bin:$GOPATH/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/sbin:$HOME/bin"
+
+# Add in snippets
+zinit snippet OMZP::macos
+
+# Java stuff
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home
+alias j11="export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home;echo 'Switched to Zulu JDK 11'"
+alias j17="export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home;echo 'Switched to Zulu JDK 17'"
+alias j21="export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home;echo 'Switched to Zulu JDK 21'"
+
+alias j!=jbang
+export PATH="$HOME/.jbang/bin:$PATH"
+
+# Opt out Azure telemetry
+export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=true
+
+export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
+

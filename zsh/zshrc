@@ -1,0 +1,138 @@
+# zinit plugin manager https://github.com/zdharma-continuum/zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-history-substring-search
+zinit light jeffreytse/zsh-vi-mode
+zinit light Aloxaf/fzf-tab
+
+autoload -Uz compinit && compinit
+zinit cdreplay -q
+
+# Encoding Stuff
+export LC_ALL=en_US.UTF-8
+
+# General ZSH config
+autoload -U colors && colors
+setopt autocd
+
+# Vim Mode
+bindkey -v
+bindkey "^?" backward-delete-char
+
+# Prefix search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=false
+HISTORY_SUBSTRING_SEARCH_PREFIXED=true
+
+# Completion
+autoload -Uz compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu no
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zcache
+zstyle ':completion:*:default' list-colors \
+  "di=1;36" "ln=35" "so=32" "pi=33" "ex=31" "bd=34;46" "cd=34;43" \
+  "su=30;41" "sg=30;46" "tw=30;42" "ow=30;43"
+
+# FZF Tab
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# History settings
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
+HISTFILE=$HOME/.zsh_history
+HIST_DUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_find_no_dups
+
+# One vim to rule them all
+export EDITOR=nvim
+
+# Use `bat` as standard and man pager
+export BAT_THEME="tokyonight_night"
+export PAGER="bat"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# Some useful aliases for modern tools
+alias vim="nvim"
+alias ls="eza --group-directories-first"
+alias ll="eza -al --group-directories-first"
+alias du="dust"
+alias df="duf"
+alias ping="gping"
+alias htop="btop"
+alias lzg="lazygit"
+alias lzd="lazydocker"
+
+# ZSH config editing and sourcing
+alias ez="vim $HOME/.zshrc"
+alias sz="source $HOME/.zshrc"
+
+# Git aliases
+alias g='git'
+alias gs="git status"
+
+# Change directory with yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+# FZF
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+  --highlight-line \
+  --info=inline-right \
+  --ansi \
+  --layout=reverse \
+  --border=sharp \
+  --color=bg+:#283457 \
+  --color=bg:#16161e \
+  --color=border:#27a1b9 \
+  --color=fg:#c0caf5 \
+  --color=gutter:#16161e \
+  --color=header:#ff9e64 \
+  --color=hl+:#2ac3de \
+  --color=hl:#2ac3de \
+  --color=info:#545c7e \
+  --color=marker:#ff007c \
+  --color=pointer:#ff007c \
+  --color=prompt:#2ac3de \
+  --color=query:#c0caf5:regular \
+  --color=scrollbar:#27a1b9 \
+  --color=separator:#ff9e64 \
+  --color=spinner:#ff007c \
+"
+eval "$(fzf --zsh)"
+
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
+# Starship prompt
+export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+eval "$(starship init zsh)"
+
+# OS specific sections
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    source "$XDG_CONFIG_HOME/zsh/zshrc.macos"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    source "$XDG_CONFIG_HOME/zsh/zshrc.linux" 
+fi
