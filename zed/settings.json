@@ -1,0 +1,63 @@
+{
+  "vim_mode": true,
+  "base_keymap": "JetBrains",
+
+  // Theming
+  "theme": {
+    "mode": "system",
+    "light": "Tokyo Night Light",
+    "dark": "Tokyo Night",
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Colored Zed Icons Theme Dark",
+    "dark": "Colored Zed Icons Theme Dark",
+  },
+  "experimental.theme_overrides": {
+    "editor.background": "#1A1B2650",
+    "background": "#1A1B2650",
+    "background.appearance": "blurred",
+  },
+  "active_pane_modifiers": {
+    "border_size": 1.0,
+    "inactive_opacity": 0.7,
+  },
+  "tab_bar": {
+    "show_nav_history_buttons": false,
+  },
+  "tabs": {
+    "file_icons": true,
+  },
+
+  // Fonts
+  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_size": 18,
+  "ui_font_family": "Berkeley Mono",
+  "ui_font_size": 18,
+
+  "terminal": {
+    "font_family": "MonaspiceNe Nerd Font",
+    "font_size": 16,
+    "line_height": "standard",
+  },
+  "agent_ui_font_size": 16,
+  "agent_buffer_font_size": 14,
+
+  // Telemetry
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+
+  // Status Bar
+  "collaboration_panel": {
+    "button": false,
+  },
+
+  // Editor
+  "auto_signature_help": false,
+  "edit_predictions": {
+    "mode": "subtle",
+    "enabled_in_text_threads": false,
+  },
+}
