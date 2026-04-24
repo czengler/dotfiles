@@ -1,4 +1,18 @@
 {
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "vim_mode": true,
   "base_keymap": "JetBrains",
 
@@ -12,11 +26,6 @@
     "mode": "system",
     "light": "Colored Zed Icons Theme Dark",
     "dark": "Colored Zed Icons Theme Dark",
-  },
-  "experimental.theme_overrides": {
-    "editor.background": "#1A1B2650",
-    "background": "#1A1B2650",
-    "background.appearance": "blurred",
   },
   "active_pane_modifiers": {
     "border_size": 1.0,
@@ -51,6 +60,7 @@
 
   // Status Bar
   "collaboration_panel": {
+    "dock": "left",
     "button": false,
   },
 
