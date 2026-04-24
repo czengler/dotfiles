@@ -1,12 +1,17 @@
 return {
   {
+    lazy = false,
+    'f-person/auto-dark-mode.nvim',
+    opts = {},
+  },
+  {
     'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
-        style = 'night', -- `storm`, `moon`, `night`, `day`
+        style = 'night',
         light_style = 'day',
         transparent = true,
         styles = {

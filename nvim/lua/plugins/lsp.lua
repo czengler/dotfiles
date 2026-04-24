@@ -25,6 +25,7 @@ return {
       'javascript',
       'vue',
       'rust',
+      'yaml',
       -- 'python',
       -- 'java',
       -- 'c'
