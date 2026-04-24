@@ -1,3 +1,12 @@
+# We need to set Homebrew before anything else happens... so here we go
+if [[ $OSTYPE == "darwin"* ]]; then
+    if [[ -x /opt/homebrew/bin/brew ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    elif [[ -x /usr/local/bin/brew ]]; then
+        eval "$(/usr/local/bin/brew shellenv)"
+    fi
+fi
+
 # zinit plugin manager https://github.com/zdharma-continuum/zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -65,9 +74,32 @@ setopt hist_find_no_dups
 export EDITOR=nvim
 
 # Use `bat` as standard and man pager
-export BAT_THEME="tokyonight_night"
+export BAT_THEME="auto:system"
+export BAT_THEME_DARK="tokyonight_night"
+export BAT_THEME_LIGHT="tokyonight_day"
 export PAGER="bat"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+export EZA_COLORS="\
+uu=36:\
+gu=36:\
+da=33:\
+sn=0:\
+sb=0:\
+ur=31:\
+uw=31:\
+ux=31:\
+ue=31:\
+gr=31:\
+gw=31:\
+gx=31:\
+tr=31:\
+tw=31:\
+tx=31:\
+xx=38:\
+di=34:\
+ex=32:\
+fi=0"
 
 # Some useful aliases for modern tools
 alias vim="nvim"
@@ -75,7 +107,7 @@ alias ls="eza --group-directories-first"
 alias ll="eza -al --group-directories-first"
 alias du="dust"
 alias df="duf"
-alias ping="gping"
+# alias ping="gping"
 alias htop="btop"
 alias lzg="lazygit"
 alias lzd="lazydocker"
@@ -98,28 +130,29 @@ function y() {
 }
 
 # FZF
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --highlight-line \
-  --info=inline-right \
-  --ansi \
-  --layout=reverse \
-  --border=sharp \
-  --color=bg+:#283457 \
-  --color=bg:#16161e \
-  --color=border:#27a1b9 \
-  --color=fg:#c0caf5 \
-  --color=gutter:#16161e \
-  --color=header:#ff9e64 \
-  --color=hl+:#2ac3de \
-  --color=hl:#2ac3de \
-  --color=info:#545c7e \
-  --color=marker:#ff007c \
-  --color=pointer:#ff007c \
-  --color=prompt:#2ac3de \
-  --color=query:#c0caf5:regular \
-  --color=scrollbar:#27a1b9 \
-  --color=separator:#ff9e64 \
-  --color=spinner:#ff007c \
+export FZF_DEFAULT_OPTS="
+  --highlight-line
+  --info=inline-right
+  --ansi
+  --layout=reverse
+  --border=sharp
+  --color=bg+:0
+  --color=bg:-1
+  --color=fg:-1
+  --color=fg+:-1:regular:bold
+  --color=hl:6
+  --color=hl+:6:regular:bold
+  --color=pointer:5
+  --color=marker:5
+  --color=prompt:4
+  --color=query:-1:regular
+  --color=border:6
+  --color=separator:3
+  --color=scrollbar:6
+  --color=header:3
+  --color=info:8
+  --color=spinner:5
+  --color=gutter:-1
 "
 eval "$(fzf --zsh)"
 
