@@ -6,3 +6,5 @@ zed/prompts/
 
 zsh/private.env
 nvim/lazy-lock.json
+
+yarn/
