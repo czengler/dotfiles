@@ -40,6 +40,18 @@ local function bind_laptop_and_keyboard(key, func)
 	hs.hotkey.bind(laptop_modifiers, key, func)
 end
 
+-- Function to toggle between Light and Dark mode
+function toggleDarkMode()
+	local script = [[
+        tell application "System Events"
+            tell appearance preferences
+                set dark mode to not dark mode
+            end tell
+        end tell
+    ]]
+	hs.osascript.applescript(script)
+end
+
 -------------------------
 -- Window manipulation --
 -------------------------
@@ -109,7 +121,9 @@ bind_laptop_and_keyboard("0", function()
 	spoon.WinWin:moveToScreen("right")
 end)
 
--- toggle sleep allowed
+-----------
+-- Sleep --
+-----------
 local function switch_sleepable()
 	hs.caffeinate.toggle("displayIdle")
 	hs.caffeinate.toggle("systemIdle")
@@ -122,3 +136,8 @@ local function switch_sleepable()
 end
 
 bind_laptop_and_keyboard("Z", switch_sleepable)
+
+----------------------
+-- Toggle dark mode --
+----------------------
+bind_laptop_and_keyboard("D", toggleDarkMode)
