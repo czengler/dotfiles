@@ -19,8 +19,8 @@
   // Theming
   "theme": {
     "mode": "system",
-    "light": "Tokyo Night Light",
-    "dark": "Tokyo Night",
+    "light": "Rosé Pine Dawn",
+    "dark": "Rosé Pine Moon",
   },
   "icon_theme": {
     "mode": "system",

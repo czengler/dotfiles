@@ -75,8 +75,8 @@ export EDITOR=nvim
 
 # Use `bat` as standard and man pager
 export BAT_THEME="auto:system"
-export BAT_THEME_DARK="tokyonight_night"
-export BAT_THEME_LIGHT="tokyonight_day"
+export BAT_THEME_DARK="rose-pine-moon"
+export BAT_THEME_LIGHT="rose-pine-dawn"
 export PAGER="bat"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
