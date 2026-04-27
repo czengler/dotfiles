@@ -15,7 +15,7 @@ spoon.ReloadConfiguration:start()
 hs.window.animationDuration = 0.0
 
 -- Foreground color for choosers 255 0 246
-local mainColor = hs.drawing.color.asRGB({ hex = "#9ece6a" })
+local mainColor = hs.drawing.color.asRGB({ hex = "#286983" })
 
 -- Alert style
 hs.alert.defaultStyle.strokeWidth = 1

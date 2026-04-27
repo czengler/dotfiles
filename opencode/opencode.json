@@ -1,0 +1,16 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": true,
+  "plugin": [
+    "@mohak34/opencode-notifier@latest"
+  ],
+  "permission": {
+    "bash": {
+      "git": "ask",
+      "git *": "ask",
+      "docker": "allow",
+      "docker *": "allow",
+      "rm *": "ask"
+    }
+  }
+}

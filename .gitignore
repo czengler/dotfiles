@@ -8,3 +8,4 @@ zsh/private.env
 nvim/lazy-lock.json
 
 yarn/
+/opencode/opencode-notifier-state.json
